@@ -5,7 +5,6 @@ var artistHistory = [];
 var songLimit = 8;
 // max length of artists to store
 var historyLimit = 10; 
-var stuff =[];
 
 var getSongs = function(artist) {
     // somehow filter songs by popularity with a query string?
@@ -18,7 +17,6 @@ var getSongs = function(artist) {
             if (response.ok) {
                 response.json().then(function(data) {
                     console.log(data);
-                    stuff = data;
                     displaySongs(data);
                 })
             }
