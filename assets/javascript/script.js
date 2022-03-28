@@ -8,7 +8,7 @@ var historyLimit = 10;
 
 var getSongs = function(artist) {
     // somehow filter songs by popularity with a query string?
-    var apiUrl = "http://www.songsterr.com/a/ra/songs.json?pattern=" + artist;
+    var apiUrl = "http://www.songsterr.com/a/ra/songs/byartists.json?artists=" + artist;
 
     // fetch request to url
     fetch(apiUrl)
@@ -31,22 +31,29 @@ var getSongs = function(artist) {
 
 var displaySongs = function(data) {
     for (i = 0; i < songLimit; i++) {
-        var listEl = $("<li>")
-            .addClass("song")
-            .text(data[i].title);
-        // append song to <ol>
-        $(".songs").append(listEl);
+        // stop running if there are less songs available than our song limit
+        if (i < data.length) {
+            var listEl = $("<li>")
+                .addClass("song")
+                .text(data[i].title);
+            // append song to <ol>
+            $(".songs").append(listEl);
+        }
     }
 
 }
 
-$("#submit").click(function() {
+$("#submit-btn").click(function() {
     // get submitted artist name
     var artist = $("#band-text-box").val();
     // display artist name on page
     $(".band-name-searched").text(artist);
     // clear any previous songs listed
-
+    if ($(".songs").children().length) {
+       $(".songs").children().each(function() {
+           $(this).remove();
+       });
+    }
     // get api data for artist
     getSongs(artist);
 });
