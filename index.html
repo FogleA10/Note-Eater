@@ -12,14 +12,19 @@
 </head>
 
 <body>
-    <header>Note Eater</header>
+    <div class="card-panel center light-blue lighten-2">
+      <div class="container">
+        <h1 class="white-text">Note Eater</h1>
+      </div>
+    </div>
     <p>Find your favorite band song's sheet music and music videos.</p>
   
     <main>
-      <div>
-        <h1>Search Band</h1>
-        <input type="text" id= "band-text-box"/>
-        <button id="submit">Submit</button>
+    <div class="container">
+      <div class="center">
+        <h3>Search Band</h3>
+        <input class="" type="text" id="band-text-box" placeholder=""/>
+        <button id="submit-btn"><i class="material-icons small">music_note</i></button>
         <!-- <img src="(location of the image in my files)"> -->
       </div>
 
@@ -40,13 +45,16 @@
         </ol>
       </div>
 
-      <div id="viewing-sheetmusic-window">
-        <iframe src=""></iframe>
+      <div class="row center">
+        <div class="col m6" id="viewing-sheetmusic-window">
+          <iframe src=""></iframe>
+        </div>
+        
+        <div class="col m6" id="viewing-musicvideo-window">
+          <iframe src=""></iframe>
+        </div>
       </div>
-      
-      <div id="viewing-musicvideo-window">
-        <iframe src=""></iframe>
-      </div>
+    </div>
     </main>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
