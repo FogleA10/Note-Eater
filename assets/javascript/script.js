@@ -7,7 +7,9 @@ var songLimit = 8;
 var historyLimit = 10; 
 
 var getSongs = function(artist) {
-    // somehow filter songs by popularity with a query string?
+    // must add quotes to artist name for url to accept artists with spaces in name 
+    artist = "\"" + artist + "\"";
+    console.log(artist)
     var apiUrl = "http://www.songsterr.com/a/ra/songs/byartists.json?artists=" + artist;
 
     // fetch request to url
@@ -46,6 +48,8 @@ var displaySongs = function(data) {
 $("#submit-btn").click(function() {
     // get submitted artist name
     var artist = $("#band-text-box").val();
+    // clear search box
+    $("#band-text-box").val("");
     // display artist name on page
     $(".band-name-searched").text(artist);
     // clear any previous songs listed
