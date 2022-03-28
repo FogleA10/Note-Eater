@@ -15,9 +15,11 @@ var getSongs = function(artist) {
     // fetch request to url
     fetch(apiUrl)
         .then(function(response) {
+            console.log(response)
             // if successful
             if (response.ok) {
                 response.json().then(function(data) {
+                    if (data.length > 0 )
                     console.log(data);
                     displaySongs(data);
                 })
@@ -26,7 +28,8 @@ var getSongs = function(artist) {
                 // if not successful (artist not valid) show modal pop up 
                 // with text alert in <p> element with id="modal-alert"
                 $("#modal-alert").text("Artist not found. Please enter a valid artist name.");
-                $("modal").show();
+                $(".modal").show();
+                console.log("modal-success")
             }
         })   
 }
@@ -113,6 +116,6 @@ $("#submit-btn").click(function() {
 
 // when user clicks (x) with id="close-modal" on the modal, clear modal text and close it
 $("#close-modal").click(function() {
-    $("modal-alert").text("");
-    $("modal").hide();
+    $("#modal-alert").text("");
+    $(".modal").hide();
 })
