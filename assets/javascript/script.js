@@ -53,15 +53,15 @@ var displaySongs = function(data) {
     $(".song-name").click(function() {
         var songName = $(this).text();
         var artist = $(".band-name-searched").text();
+        var songLink = "http://www.songsterr.com/a/wa/song?id=" + data[i].id;
     
         searchTerm = songName + " " + artist;
         getVideos(searchTerm);
+        //musicFrame(songLink);
     })
 }
 
-
-
-// This is the fetch for the youtube api, but we need to dynanically create a variable searchTerm from the song selected by the user to pass into the youtube api
+// youtube api
 var getVideos = function(searchTerm) {
     console.log(searchTerm)
     var apiKey = "AIzaSyC9UiXjitcc1HacmkbVO0wCgLoCItoHgvA";
@@ -72,44 +72,10 @@ var getVideos = function(searchTerm) {
     })
     .then(function(data) {
         console.log(data);
+        var videoLink = "https://www.youtube.com/watch?v=" + data.items[0].id.videoId;
+        console.log(videoLink);
 })
 
-//  This was my old songsterr api call which I guess is unecessary but just in case
-// var search = "Bob Dylan";
-// var apiUrl = "http://www.songsterr.com/a/ra/songs.json?pattern=" + search;
-
-// // put into function called by form submit handler
-// fetch(requestUrl)
-// .then(function(response) {
-//     return response.json();
-// })
-// .then(function(data) {
-//     console.log(data);
-//     pullSongs(data);
-// })
-// var linkSongs = function(data) {
-//     let songName1 = data[0].title;
-//     let songLink1 = "http://www.songsterr.com/a/wa/song?id=" + data[0].id;
-//     let songName2 = data[1].title;
-//     let songLink2 = "http://www.songsterr.com/a/wa/song?id=" + data[1].id;
-//     let songName3 = data[2].title;
-//     let songLink3 = "http://www.songsterr.com/a/wa/song?id=" + data[2].id;
-//     let songName4 = data[3].title;
-//     let songLink4 = "http://www.songsterr.com/a/wa/song?id=" + data[3].id;
-//     let songName5 = data[4].title;
-//     let songLink5 = "http://www.songsterr.com/a/wa/song?id=" + data[4].id;
-//     let songName6 = data[5].title;
-//     let songLink6 = "http://www.songsterr.com/a/wa/song?id=" + data[5].id;
-//     let songName7 = data[6].title;
-//     let songLink7 = "http://www.songsterr.com/a/wa/song?id=" + data[6].id;
-//     let songName8 = data[7].title;
-//     let songLink8 = "http://www.songsterr.com/a/wa/song?id=" + data[7].id;
-//     let songName9 = data[8].title;
-//     let songLink9 = "http://www.songsterr.com/a/wa/song?id=" + data[8].id;
-//     let songName10 = data[9].title;
-//     let songLink10 = "http://www.songsterr.com/a/wa/song?id=" + data[9].id;
-//     console.log(songLink1);
-//     console.log(songName1);
 }
 
 $("#submit-btn").click(function() {
