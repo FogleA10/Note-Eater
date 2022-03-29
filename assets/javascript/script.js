@@ -8,9 +8,8 @@ var historyLimit = 10;
 
 var getSongs = function(artist) {
     // must add quotes to artist name for url to accept artists with spaces in name 
-    artist = "\"" + artist + "\"";
-    console.log(artist)
-    var apiUrl = "http://www.songsterr.com/a/ra/songs/byartists.json?artists=" + artist;
+    artistQuotes = "\"" + artist + "\"";
+    var apiUrl = "http://www.songsterr.com/a/ra/songs/byartists.json?artists=" + artistQuotes;
 
     // fetch request to url
     fetch(apiUrl)
@@ -20,7 +19,7 @@ var getSongs = function(artist) {
             if (response.ok) {
                 response.json().then(function(data) {
                     if (data.length) {
-                        displaySongs(data);
+                        displaySongs(data, artist);
                     }
                     else {
                         $("#modal-alert").text("Artist not found. Please enter a valid artist name.");
@@ -38,7 +37,9 @@ var getSongs = function(artist) {
         })   
 }
 
-var displaySongs = function(data) {
+var displaySongs = function(data, artist) {
+    // display artist name on page
+    $(".band-name-searched").text(artist);
     for (i = 0; i < songLimit; i++) {
         // stop running if there are less songs available than our song limit
         if (i < data.length) {
@@ -85,8 +86,6 @@ $("#submit-btn").click(function() {
     var artist = $("#band-text-box").val();
     // clear search box
     $("#band-text-box").val("");
-    // display artist name on page
-    $(".band-name-searched").text(artist);
     // clear any previous songs listed
     if ($(".songs").children().length) {
        $(".songs").children().each(function() {
