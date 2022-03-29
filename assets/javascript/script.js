@@ -72,8 +72,10 @@ var getVideos = function(searchTerm) {
     })
     .then(function(data) {
         console.log(data);
+        var videoID = data.items[0].id.videoId;
         var videoLink = "https://www.youtube.com/watch?v=" + data.items[0].id.videoId;
         console.log(videoLink);
+        $("#video").attr("src", "https://www.youtube.com/embed/" + videoID);
 })
 
 }
