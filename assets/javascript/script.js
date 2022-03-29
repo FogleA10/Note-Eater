@@ -49,24 +49,17 @@ var displaySongs = function(data) {
             $(".songs").append(listEl);
         }
     }
-    console.log($(".song-name"))
+    
+    $(".song-name").click(function() {
+        var songName = $(this).text();
+        var artist = $(".band-name-searched").text();
+    
+        searchTerm = songName + " " + artist;
+        getVideos(searchTerm);
+    })
 }
 
 
-var songParent = [];
-var songs =[];
-$(".songs").on("click", function() {
-    songParent = $(".songs");
-    songs = $(".songs");
-    
-    var index = $(".songs").index($(this));
-    console.log(index)
-    var songName = $(".song-name")[index].text();
-    var artist = $(".band-name-searched").text();
-
-    searchTerm = songName + artist;
-    getVideos(searchTerm);
-})
 
 // This is the fetch for the youtube api, but we need to dynanically create a variable searchTerm from the song selected by the user to pass into the youtube api
 var getVideos = function(searchTerm) {
