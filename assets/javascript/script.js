@@ -43,19 +43,25 @@ var displaySongs = function(data) {
         // stop running if there are less songs available than our song limit
         if (i < data.length) {
             var listEl = $("<li>")
-                .addClass("song")
+                .addClass("song-name")
                 .text(data[i].title);
             // append song to <ol>
             $(".songs").append(listEl);
         }
     }
-    console.log($(".song"))
+    console.log($(".song-name"))
 }
 
-$(".song").on("click", function() {
-    console.log("function ran")
-    var index = $(".song").index($(this));
-    var songName = $(".song")[index].text();
+
+var songParent = [];
+var songs =[];
+$(".songs").on("click", function() {
+    songParent = $(".songs");
+    songs = $(".songs");
+    
+    var index = $(".songs").index($(this));
+    console.log(index)
+    var songName = $(".song-name")[index].text();
     var artist = $(".band-name-searched").text();
 
     searchTerm = songName + artist;
