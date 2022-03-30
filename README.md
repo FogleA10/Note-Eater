@@ -27,8 +27,8 @@ A band search app created to search for bands that allows a user to enter a band
 * https://github.com/FogleA10
 * https://github.com/Emmanuel6093
 
-![image](/Note-Eater/assets/images/note-eater.png)
+![alt text](./note-eater.png)
 
 [https://foglea10.github.io/Note-Eater/](https://foglea10.github.io/Note-Eater/)
 
-    
+
