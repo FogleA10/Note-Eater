@@ -92,9 +92,10 @@ var getVideos = function(searchTerm) {
 
 // add artist to search dropdown and store to local storage
 var addHistory = function(artist) {
-    // create new option in search dropdown
-    var optionEl = $("<option>")
-    .attr("value", artist);
+    // create new button in search history section
+    var buttonEl = $("<button>")
+        .addClass("btn-history waves-effect waves-light btn col s12")
+        .text(artist);
 
     // if history reaches the limit, remove oldest search result element
     if ($("#search-history").length == historyLimit) {
@@ -105,7 +106,7 @@ var addHistory = function(artist) {
     }
 
     // add new artist to artist history list on page
-    $("#search-history").append(optionEl);
+    $("#search-history").append(buttonEl);
     // add new artist to local storage
     artistHistory.push(artist);
     localStorage.setItem("artists", JSON.stringify(artistHistory));
@@ -114,11 +115,12 @@ var addHistory = function(artist) {
 // load search history from local storage and add to search dropdown menu
 var loadHistory = function () {
     for (i = 0; i < artistHistory.length; i++) {
-        // create new option in search dropdown
-        var optionEl = $("<option>")
-            .attr("value", artistHistory[i]);
+        // create new button in search history section
+        var buttonEl = $("<button>")
+            .addClass("btn-history waves-effect waves-light btn col s12")
+            .text(artistHistory[i]);
             // append to end of options list
-            $("#search-history").append(optionEl);
+            $("#search-history").append(buttonEl);
     }
 }
 
@@ -158,8 +160,8 @@ if (localStorage.getItem("artists")) {
 }
 
 // when user clicks option in search history dropdown, retrieve and print artist data
-$("#search-history").on("click", "option", function() {
-    artist = $(this).attr("value");
+$("#search-history").on("click", "button", function() {
+    artist = $(this).text();
     console.log("function ran")
     clearResults();
     getSongs(artist);
