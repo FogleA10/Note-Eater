@@ -58,8 +58,20 @@ h2, h4 {
 
 h4 {
     font-size: 150%;
+    border-bottom: 2px solid rgb(0, 63, 122);
+    padding-bottom: 5px;
 }
 
+#sheet-music img, #video {
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+#content-link {
+    justify-content: space-between;
+}
 /* default display to none */
 #content-link {
     display: none;
