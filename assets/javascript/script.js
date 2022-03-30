@@ -65,7 +65,7 @@ var displaySongs = function(data, artist) {
 // youtube api
 var getVideos = function(searchTerm) {
     console.log(searchTerm)
-    var apiKey = "AIzaSyC9UiXjitcc1HacmkbVO0wCgLoCItoHgvA";
+    var apiKey = "AIzaSyBLlzSDytVY85LZFVhQJHeHMXn-jQsel7M";
     var apiUrl2 = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" + searchTerm + "&key=" + apiKey;
     fetch(apiUrl2)
     .then(function(response) {
