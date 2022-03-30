@@ -71,8 +71,10 @@ var displaySongs = function(data) {
     
     $(".song-name").click(function() {
         var songName = $(this).text();
+        var songIndex = $(".song-name").index($(this));
+        console.log(songIndex)
         var artist = $(".band-name-searched").text();
-        var songLink = "https://www.songsterr.com/a/wa/song?id=" + data[i].id;
+        var songLink = "https://www.songsterr.com/a/wa/song?id=" + data[songIndex].id;
 
         // set sheet-music link
         $("#sheet-music-link").attr("href", songLink);
