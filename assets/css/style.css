@@ -18,16 +18,16 @@
     list-style-type: disc !important;
   }
 
-#band-text-box {
-  border: 2px solid;
-  width: 35rem;
-}
+ 
 input {
     text-align: center;
+    border-color: black;
   }
   #band-text-box {
     font-size: 20px;
     border-radius: 10px;
+    border-color:black;
+
   }
 
   #submit-btn {
