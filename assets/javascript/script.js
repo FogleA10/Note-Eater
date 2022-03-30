@@ -9,7 +9,7 @@ var historyLimit = 10;
 var getSongs = function(artist) {
     // must add quotes to artist name for url to accept artists with spaces in name 
     artistQuotes = "\"" + artist + "\"";
-    var apiUrl = "http://www.songsterr.com/a/ra/songs/byartists.json?artists=" + artistQuotes;
+    var apiUrl = "https://www.songsterr.com/a/ra/songs/byartists.json?artists=" + artistQuotes;
 
     // fetch request to url
     fetch(apiUrl)
@@ -54,7 +54,7 @@ var displaySongs = function(data, artist) {
     $(".song-name").click(function() {
         var songName = $(this).text();
         var artist = $(".band-name-searched").text();
-        var songLink = "http://www.songsterr.com/a/wa/song?id=" + data[i].id;
+        var songLink = "https://www.songsterr.com/a/wa/song?id=" + data[i].id;
     
         searchTerm = songName + " " + artist;
         getVideos(searchTerm);
