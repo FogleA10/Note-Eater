@@ -37,9 +37,14 @@ var getSongs = function(artist) {
         })   
 }
 
-var displaySongs = function(data, artist) {
-    
-    addHistory(artist);
+var displaySongs = function(data) {
+    console.log(data)
+    // get case-correct name from api data
+    artist = data[0].artist.nameWithoutThePrefix;
+    // add to history if not already in search history
+    if (!artistHistory.includes(artist)) {
+        addHistory(artist);
+    }
 
     // display artist name on page
     $(".band-name-searched").text(artist);
@@ -117,19 +122,24 @@ var loadHistory = function () {
     }
 }
 
-$("#submit-btn").click(function() {
-    // get submitted artist name
-    var artist = $("#band-text-box").val();
+var clearResults = function() {
     // clear search box
     $("#band-text-box").val("");
     // clear any previous songs listed
     if ($(".songs").children().length) {
-       $(".songs").children().each(function() {
-           $(this).remove();
-       });
+        $(".songs").children().each(function() {
+            $(this).remove();
+        });
     }
     // hide previous videos/links
     $("#content-link").hide();
+}
+
+$("#submit-btn").click(function() {
+    // get submitted artist name
+    var artist = $("#band-text-box").val();
+    // clear previous results if exits
+    clearResults();
     // get api data for artist
     getSongs(artist);
 });
@@ -141,14 +151,16 @@ $("#close-modal").click(function() {
     console.log("modal close")
 })
 
-// when user clicks option in search history dropdown, retrieve and print artist data
-$("#search-history").on("click", "option", function() {
-    artist = $(this).attr("value");
-    getSongs(artist);
-})
-
 // if there are saved artists in local storage, load to page
 if (localStorage.getItem("artists")) {
     artistHistory = JSON.parse(localStorage.getItem("artists"));
     loadHistory();
 }
+
+// when user clicks option in search history dropdown, retrieve and print artist data
+$("#search-history").on("click", "option", function() {
+    artist = $(this).attr("value");
+    console.log("function ran")
+    clearResults();
+    getSongs(artist);
+})

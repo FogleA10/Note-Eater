@@ -2,51 +2,43 @@
     font-family: 'Oswald', sans-serif;
     box-sizing: border-box;
 }
-#hero{
+
+#hero {
     position:relative;
     margin:0;
-  }
-  #hero div h1 {
+}
+
+#hero div h1 {
     margin:20px;
-  }
-  #favorite-band-info{
+}
+
+#favorite-band-info {
     text-align:center;
     color:white;
     margin:0 auto;
-  }
-  li {
+}
+
+li {
     list-style-type: disc !important;
-  }
+}
 
- 
-
-
-  #band-text-box {
+#band-text-box {
     font-size: 20px;
     border-radius: 10px;
     border: 2px solid;
     text-align: center;
+}
 
-
-  }
-
-  #submit-btn {
+#submit-btn {
     margin-left: 10px;
-  }
-  #search-history{
-    position: absolute;
-    left: 2%;
-  }
-  
-
-
+}
 
 
 button {
     border: 2px solid;
     width: 5rem;
     border-radius: 15px;
-  }
+}
 
 .section-search input {
     padding: 5px !important;
