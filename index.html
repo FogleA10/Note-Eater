@@ -23,12 +23,13 @@
   </head>
 
   <body>
-      <section class="teal darken-1 white-text">
+      <section id="hero" class="teal darken-1 white-text">
         <div class="container">
           <div class="row">
             <div class="col s12">
               <h1 class="center-align">Note Eater</h1>
             </div>
+            <p id="favorite-band-info">Find your favorite band song's sheet music and music videos</p>
           </div>
         </div>
       </section>
@@ -39,7 +40,16 @@
             <div class="row">
               <div class="col s12">
                 <h3 class="center-align">Search Band</h3>
-                <input class="white black-text center-align" type="text" id="band-text-box" placeholder=""/>
+                <input class="white black-text center-align" type="text" id="band-text-box" placeholder="" list="search-history"/>
+                <datalist id="search-history">
+                  <option value="Chrome">
+                    <option value="Firefox">
+                    <option value="Internet Explorer">
+                    <option value="Opera">
+                    <option value="Safari">
+                    <option value="Microsoft Edge">
+                </datalist>
+
                 <button id="submit-btn"><i class="material-icons small">music_note</i></button>
                 <!-- <img src="(location of the image in my files)"> -->
               </div>
@@ -47,7 +57,9 @@
           </div>
         </section>
 
-        <div id="search-history">Search History</div>
+       
+
+
 
         <section class="section section-search teal darken-1 white-text">
           <div class="container">
