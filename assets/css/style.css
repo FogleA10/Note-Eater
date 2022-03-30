@@ -2,29 +2,24 @@
     font-family: 'Oswald', sans-serif;
 }
 
-#band-text-box {
-    border: 2px solid;
-    width: 35rem;
+.section-search input {
+    padding: 5px !important;
+    font-size: 18px !important;
+    width: 90% !important;
+    border: #f4f4f4 3px solid !important;
+    text-align: center !important;
 }
 
-button {
-
+#submit-btn {
+    text-align: center !important;
     border: 2px solid;
     width: 5rem;
     border-radius: 15px;
 }
 
-input {
-    text-align: center;
-}
 
-#band-text-box {
-    font-size: 20px;
-    border-radius: 10px;
-}
 
-#submit-btn {
-    margin-left: 10px;
-}
+
+
 
 
