@@ -19,14 +19,14 @@
   }
 
  
-input {
-    text-align: center;
-    border-color: black;
-  }
+
+
   #band-text-box {
     font-size: 20px;
     border-radius: 10px;
-    border-color:black;
+    border: 2px solid;
+    text-align: center;
+
 
   }
 
