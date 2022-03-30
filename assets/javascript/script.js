@@ -73,6 +73,7 @@ var getVideos = function(searchTerm) {
     })
     .then(function(data) {
         var videoID = data.items[0].id.videoId;
+        console.log(data)
         var videoLink = "https://www.youtube.com/watch?v=" + data.items[0].id.videoId;
         console.log(videoLink);
         $("#video").attr("src", "https://www.youtube.com/embed/" + videoID);
