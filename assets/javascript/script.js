@@ -5,6 +5,16 @@ var artistHistory = [];
 var songLimit = 8;
 // max length of artists to store
 var historyLimit = 8; 
+// API keys
+apiKey = [
+    "AIzaSyBLlzSDytVY85LZFVhQJHeHMXn-jQsel7M",
+    "AIzaSyDm8f3Koswf1WpkB-PZREX1MdyEFY3O96U",
+    "AIzaSyAJv7TNfiUjyTSe7zlbFq5Iz12C71vpgO0",
+    "AIzaSyCJisPCVfrIHX2O3gEgPrHjTXqqzP-27xo",
+    "AIzaSyCcYQAsfiT7nK-WGIKco6qBWhti82QOnPE"
+];
+
+keyNum = 0;
 
 var getSongs = function(artist) {
     // must add quotes to artist name for url to accept artists with spaces in name 
@@ -73,8 +83,17 @@ var displaySongs = function(data) {
 // youtube api
 var getVideos = function(searchTerm) {
     console.log(searchTerm)
-    var apiKey = "AIzaSyBLlzSDytVY85LZFVhQJHeHMXn-jQsel7M";
-    var apiUrl2 = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" + searchTerm + "&key=" + apiKey;
+    // cycle available api keys each fetch to mitigate youtube api quota limit
+    keyNum++;
+    // if hit key length, start back at first key
+    if (keyNum == apiKey.length) {
+        keyNum = 0;
+    }
+    // store key number to minimize overuse of first keys in list due to reload resetting
+    localStorage.setItem("keyNum", JSON.stringify(keyNum));
+
+    var key = apiKey[keyNum];
+    var apiUrl2 = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" + searchTerm + "&key=" + key;
     fetch(apiUrl2)
         .then(function(response) {
             return response.json();
@@ -152,6 +171,11 @@ $("#close-modal").click(function() {
     $(".modal").hide();
     console.log("modal close")
 })
+
+// look for key start point in storage
+if (localStorage.getItem("keyNum")) {
+    keyNum = JSON.parse(localStorage.getItem("keyNum"));
+}
 
 // if there are saved artists in local storage, load to page
 if (localStorage.getItem("artists")) {
