@@ -27,4 +27,7 @@ input {
     margin-left: 10px;
 }
 
-
+/* default display to none */
+#content-link {
+    display: none;
+}

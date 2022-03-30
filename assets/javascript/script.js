@@ -72,11 +72,11 @@ var getVideos = function(searchTerm) {
         return response.json();
     })
     .then(function(data) {
-        console.log(data);
         var videoID = data.items[0].id.videoId;
         var videoLink = "https://www.youtube.com/watch?v=" + data.items[0].id.videoId;
         console.log(videoLink);
         $("#video").attr("src", "https://www.youtube.com/embed/" + videoID);
+        $("#content-link").show();
 })
 
 }
@@ -92,6 +92,8 @@ $("#submit-btn").click(function() {
            $(this).remove();
        });
     }
+    // hide previous videos/links
+    $("#content-link").hide();
     // get api data for artist
     getSongs(artist);
 });
