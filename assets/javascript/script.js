@@ -73,6 +73,9 @@ var displaySongs = function(data) {
         var songName = $(this).text();
         var artist = $(".band-name-searched").text();
         var songLink = "https://www.songsterr.com/a/wa/song?id=" + data[i].id;
+
+        // set sheet-music link
+        $("#sheet-music-link").attr("href", songLink);
     
         searchTerm = songName + " " + artist;
         getVideos(searchTerm);
